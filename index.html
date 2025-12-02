@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Anniversaire Prince - 19 Ans</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎉</text></svg>">
+    <style>
+        /* Reset et base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E4A6;
+            --gold-dark: #B8860B;
+            --black: #111111;
+            --black-light: #1a1a1a;
+            --white: #FFFFFF;
+            --gray: #F5F5F5;
+            --gray-dark: #333333;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--white);
+            background-color: var(--black);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 800;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        .gold-text {
+            color: var(--gold);
+            position: relative;
+            display: inline-block;
+        }
+
+        .gold-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes scroll {
+            0% { top: 10px; opacity: 1; }
+            100% { top: 30px; opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Particules */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(to bottom, #000000, #0a0a0a, #1a1a1a);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 40px;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: var(--transition);
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+            z-index: 2;
+        }
+
+        .crown-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s forwards 0.5s;
+        }
+
+        .animate-text {
+            background: linear-gradient(90deg, var(--white), var(--gold-light), var(--white));
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s forwards 0.7s;
+        }
+
+        .age-display {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s forwards 0.9s;
+        }
+
+        .age-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            position: relative;
+        }
+
+        .age-number::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 10%;
+            width: 80%;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .age-label {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 40px;
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s forwards 1.1s;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button i {
+            margin-left: 10px;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover i {
+            transform: translateY(3px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 1s forwards 2s;
+        }
+
+        .mouse {
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .wheel {
+            width: 4px;
+            height: 10px;
+            background-color: var(--gold);
+            border-radius: 2px;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll 2s infinite;
+        }
+
+        /* Photos section - Version avec une seule photo */
+        .photos-section {
+            background-color: var(--black-light);
+            position: relative;
+        }
+
+        .photos-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .single-photo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 60px auto;
+            max-width: 800px;
+        }
+
+        .single-photo {
+            width: 100%;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+            border: 3px solid var(--gold);
+            transition: var(--transition);
+        }
+
+        .single-photo:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .photo-frame {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--black-light), #222);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            z-index: 1;
+        }
+
+        .photo-placeholder {
+            text-align: center;
+            z-index: 2;
+            padding: 40px;
+        }
+
+        .photo-placeholder i {
+            font-size: 6rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+
+        .photo-placeholder h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--gold-light);
+        }
+
+        .photo-placeholder p {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 500px;
+            margin: 0 auto 25px;
+        }
+
+        .photo-instructions {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .photo-instructions h4 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .photo-instructions ol {
+            text-align: left;
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .photo-instructions li {
+            margin-bottom: 8px;
+        }
+
+        /* Section Musique */
+        .music-section {
+            background-color: var(--black);
+            position: relative;
+        }
+
+        .music-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--black-light);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--gold), var(--gold-dark));
+        }
+
+        .music-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .music-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-right: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .music-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--white);
+        }
+
+        .player-container {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .song-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .album-art {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .album-art i {
+            font-size: 3rem;
+            color: var(--white);
+            z-index: 2;
+        }
+
+        .album-art::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, transparent 30%, rgba(0, 0, 0, 0.4) 70%);
+            z-index: 1;
+        }
+
+        .album-art::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: var(--black);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .song-details h4 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+
+        .song-details p {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+        }
+
+        .audio-player {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .control-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--gold);
+            color: var(--black);
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--gold-light);
+        }
+
+        .control-btn.play-pause {
+            width: 70px;
+            height: 70px;
+            font-size: 1.8rem;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .volume-control i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .volume-slider {
+            width: 150px;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+        }
+
+        .music-note {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--gold);
+            opacity: 0.3;
+            animation: float 5s infinite linear;
+        }
+
+        .music-note:nth-child(1) {
+            top: 20px;
+            left: 30px;
+            animation-delay: 0s;
+        }
+
+        .music-note:nth-child(2) {
+            top: 50px;
+            right: 40px;
+            animation-delay: 1s;
+        }
+
+        .music-note:nth-child(3) {
+            bottom: 40px;
+            left: 60px;
+            animation-delay: 2s;
+        }
+
+        /* Amitié section */
+        .amitie-section {
+            background-color: var(--black);
+            position: relative;
+        }
+
+        .souvenirs-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--black-light);
+            border-radius: 20px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .souvenirs-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold), var(--gold-dark));
+        }
+
+        .souvenir-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            animation: heartbeat 2s infinite;
+        }
+
+        .souvenir-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .souvenir-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        .souvenir-text p {
+            margin-bottom: 20px;
+        }
+
+        .placeholder-text {
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .souvenir-stats {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .infinity {
+            font-size: 4rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #aaa;
+        }
+
+        /* Message section */
+        .message-section {
+            background-color: var(--black-light);
+        }
+
+        .letter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .letter {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f9f3e9;
+            color: #333;
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .letter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .letter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .letter-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--gold-dark);
+        }
+
+        .letter-wax-seal {
+            position: relative;
+        }
+
+        .seal {
+            width: 60px;
+            height: 60px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .seal::after {
+            content: 'P';
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--black);
+        }
+
+        .letter-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .greeting {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--gold-dark);
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .closing {
+            margin-top: 40px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--gold-dark);
+        }
+
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 10px;
+            color: #222;
+        }
+
+        .message-decoration {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .decoration-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 30px 20px;
+            background-color: rgba(212, 175, 55, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: var(--transition);
+        }
+
+        .decoration-item:hover {
+            transform: translateY(-10px);
+            background-color: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold);
+        }
+
+        .decoration-item i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .decoration-item p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--black);
+            padding: 80px 0 40px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .signature-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .signature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .heartbeat {
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+
+        .signature-name {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .signature-message {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            margin-bottom: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--black-light);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--gold);
+            color: var(--black);
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .footer-note p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+            }
+            
+            .age-number {
+                font-size: 6rem;
+            }
+            
+            .souvenirs-container {
+                padding: 40px 30px;
+            }
+            
+            .letter-container {
+                flex-direction: column;
+            }
+            
+            .single-photo {
+                height: 400px;
+            }
+            
+            .music-container {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: var(--black);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                z-index: 999;
+                padding: 20px 0;
+                border-top: 1px solid rgba(212, 175, 55, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .section-title {
+                font-size: 2.3rem;
+            }
+            
+            .single-photo {
+                height: 350px;
+            }
+            
+            .photo-placeholder i {
+                font-size: 4rem;
+            }
+            
+            .photo-placeholder h3 {
+                font-size: 2rem;
+            }
+            
+            .music-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .music-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .song-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .album-art {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .letter {
+                padding: 30px;
+            }
+            
+            .signature-title {
+                font-size: 2rem;
+            }
+            
+            .signature-name {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .age-number {
+                font-size: 5rem;
+            }
+            
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .single-photo {
+                height: 300px;
+            }
+            
+            .photo-placeholder {
+                padding: 20px;
+            }
+            
+            .photo-placeholder i {
+                font-size: 3rem;
+            }
+            
+            .photo-placeholder h3 {
+                font-size: 1.6rem;
+            }
+            
+            .music-container {
+                padding: 30px 20px;
+            }
+            
+            .player-controls {
+                gap: 15px;
+            }
+            
+            .control-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .control-btn.play-pause {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .souvenirs-container {
+                padding: 30px 20px;
+            }
+            
+            .souvenir-stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particules d'animation -->
+    <div id="particles-js"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">🎂 Prince - 19 Ans</div>
+            <ul class="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#musique">Musique</a></li>
+                <li><a href="Jeux.html" target="_blank"> Quinz sur Eugirdor</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Hero -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <div class="crown-icon">👑</div>
+            <h1 class="hero-title animate-text">Joyeux Anniversaire <span class="gold-text">Prince</span> !</h1>
+            <p class="hero-subtitle">À mon ami Eugirdor, pour tes 19 ans de lumière et de joie</p>
+            <div class="age-display">
+                <div class="age-number">19</div>
+                <div class="age-label">ans de bonheur</div>
+            </div>
+            <a href="#amitie" class="cta-button">
+                <span>Découvrir notre histoire</span>
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Photo Unique -->
+    <section id="photos" class="section photos-section">
+        <div class="container">
+            <h2 class="section-title">Un <span class="gold-text">Moment</span> Précieux</h2>
+            <p class="section-subtitle">Une photo spéciale </p>
+            
+            <div class="single-photo-container">
+                <div class="single-photo">
+                    <div class="photo-frame">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-camera-retro"></i>
+                            
+                            <div class="photo-instructions">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Musique -->
+    <section id="musique" class="section music-section">
+        <div class="container">
+            <h2 class="section-title">Notre <span class="gold-text">Musique</span></h2>
+            <p class="section-subtitle">Une playlist spéciale pour ton anniversaire</p>
+            
+            <div class="music-container">
+                <div class="music-note">♪</div>
+                <div class="music-note">♫</div>
+                <div class="music-note">♬</div>
+                
+                <div class="music-header">
+                    <div class="music-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Playlist Anniversaire <span class="gold-text">Prince</span></h3>
+                </div>
+                
+                <div class="player-container">
+                    <div class="song-info">
+                        <div class="album-art">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <div class="song-details">
+                            <h4>Happy Birthday - Version Spéciale</h4>
+                            <p>Pour mon ami Eugirdor</p>
+                        </div>
+                    </div>
+                    
+                    <audio id="birthday-audio" preload="metadata">
+                        <!-- Tu peux ajouter ta propre musique en remplaçant cette URL -->
+                        <source src="Titre _ “Mon Brother for Life”.mp3" type="audio/mpeg">
+                        Votre navigateur ne supporte pas l'élément audio.
+                    </audio>
+                    
+                    <div class="player-controls">
+                        <button class="control-btn prev-btn" title="Précédent">
+                            <i class="fas fa-step-backward"></i>
+                        </button>
+                        
+                        <button class="control-btn play-pause" id="play-pause-btn" title="Lecture/Pause">
+                            <i class="fas fa-play" id="play-icon"></i>
+                        </button>
+                        
+                        <button class="control-btn next-btn" title="Suivant">
+                            <i class="fas fa-step-forward"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="volume-control">
+                        <i class="fas fa-volume-down"></i>
+                        <input type="range" min="0" max="100" value="70" class="volume-slider" id="volume-slider" title="Volume">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                </div>
+                
+                <div class="playlist-info">
+                    <p><i class="fas fa-info-circle gold-text"></i> Cette musique est spécialement sélectionnée pour célébrer ton anniversaire. Tu peux la remplacer par ta chanson préférée !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Notre Amitié -->
+    <section id="amitie" class="section amitie-section">
+        <div class="container">
+            <h2 class="section-title">Notre <span class="gold-text">Amitié</span></h2>
+            <p class="section-subtitle">Un voyage à travers les souvenirs et les rires partagés</p>
+            
+            <div class="souvenirs-container">
+                <div class="souvenir-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="souvenir-content">
+                    <h3>Hommage à notre amitié</h3>
+                    <div class="souvenir-text">
+                        <!-- Le texte sera inséré ici par l'utilisateur -->
+                        <p class="placeholder-text">Cher Eugirdor, ici tu pourras lire notre histoire et tous les merveilleux souvenirs que nous avons partagés au fil des années. Je te raconterai comment notre amitié a commencé, les fous rires, les moments de complicité, et tout ce qui fait que tu es un ami si précieux à mes yeux.</p>
+                        <p class="placeholder-text">Je t'enverrai un pdf pour que sa soit plus confidentiel.</p>
+                        <p class="placeholder-text">En attendant, sache déjà que tu es un ami exceptionnel, et je suis reconnaissant pour chaque instant passé à tes côtés. Joyeux 19ème anniversaire !</p>
+                    </div>
+                    <div class="souvenir-stats">
+                        <div class="stat">
+                            <div class="stat-number" data-count="5">5</div>
+                            <div class="stat-label">Années d'amitié</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="100000">0</div>
+                            <div class="stat-label">Fous rires</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number infinity">∞</div>
+                            <div class="stat-label">Souvenirs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Message Spécial -->
+    <section id="message" class="section message-section">
+        <div class="container">
+            <h2 class="section-title">Message <span class="gold-text">Spécial</span></h2>
+            <p class="section-subtitle">Une lettre d'anniversaire juste pour toi</p>
+            
+            <div class="letter-container">
+                <div class="letter">
+                    <div class="letter-header">
+                        <div class="letter-date">Aujourd'hui</div>
+                        <div class="letter-wax-seal">
+                            <div class="seal"></div>
+                        </div>
+                    </div>
+                    <div class="letter-content">
+                        <p class="greeting">Mon cher Prince,</p>
+                        <p>En ce jour si spécial de tes 19 ans, je voulais prendre un moment pour te dire à quel point tu comptes pour moi. Tu n'es pas seulement un ami, tu es un frère, un confident, et une source constante d'inspiration.</p>
+                        <p>À travers les hauts et les bas, tu as toujours été là, et pour cela, je te remercie du fond du cœur. Ta joie de vivre est contagieuse, ton sourire illumine les pièces, et ton cœur généreux fait de toi une personne exceptionnelle.</p>
+                        <p>En cette nouvelle année de ta vie, je te souhaite tout le bonheur du monde, la réalisation de tes rêves les plus fous, et une santé de fer. Que chaque jour t'apporte son lot de joies et de découvertes.</p>
+                        <p>Merci d'être qui tu es. Merci pour ton amitié précieuse. Et surtout, merci d'illuminer ma vie de ta présence.</p>
+                        <p class="closing">Je t'embrasse fort,</p>
+                        <p class="signature">Ton ami pour la vie</p>
+                    </div>
+                </div>
+                <div class="message-decoration">
+                    <div class="decoration-item">
+                        <i class="fas fa-birthday-cake"></i>
+                        <p>Gâteau d'anniversaire</p>
+                    </div>
+                    <div class="decoration-item">
+                        <i class="fas fa-gift"></i>
+                        <p>Cadeaux surprises</p>
+                    </div>
+                    <div class="decoration-item">
+                        <i class="fas fa-music"></i>
+                        <p>Fête mémorable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Signature -->
+    <footer class="footer">
+        <div class="container">
+            <div class="signature-content">
+                <h3 class="signature-title">Créé avec <span class="heartbeat">❤️</span> par</h3>
+                <p class="signature-name">Kad Déo-Gratias AKOTCHAYE</p>
+                <p class="signature-message">Pour mon ami Eugirdor, un prince dans mon cœur</p>
+                
+                <div class="footer-note">
+                    <p>© 2025 - Site créé spécialement pour les 19 ans de Prince</p>
+                    <p class="gold-text">Que cette nouvelle année soit remplie de succès et de bonheur !</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialisation des particules d'arrière-plan
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuration des particules
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: "#D4AF37"
+                    },
+                    shape: {
+                        type: "circle",
+                        stroke: {
+                            width: 0,
+                            color: "#000000"
+                        }
+                    },
+                    opacity: {
+                        value: 0.3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 2,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#D4AF37",
+                        opacity: 0.2,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 1,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: "grab"
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 0.5
+                            }
+                        },
+                        push: {
+                            particles_nb: 4
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+
+            // Initialisation des autres fonctionnalités
+            initNavigation();
+            initMusicPlayer();
+            initScrollAnimations();
+            initCounterAnimation();
+            initParallaxEffect();
+            checkForPhoto();
+        });
+
+        // Navigation mobile
+        function initNavigation() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Fermer le menu lorsqu'on clique sur un lien
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Changement de style de la navbar au scroll
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.padding = '15px 0';
+                    navbar.style.backgroundColor = 'rgba(17, 17, 17, 0.98)';
+                    navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+                } else {
+                    navbar.style.padding = '20px 0';
+                    navbar.style.backgroundColor = 'rgba(17, 17, 17, 0.95)';
+                    navbar.style.boxShadow = 'none';
+                }
+            });
+        }
+
+        // Lecteur de musique
+        function initMusicPlayer() {
+            const audio = document.getElementById('birthday-audio');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            const playIcon = document.getElementById('play-icon');
+            const volumeSlider = document.getElementById('volume-slider');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            let isPlaying = false;
+            
+            // Fonction pour basculer lecture/pause
+            function togglePlayPause() {
+                if (isPlaying) {
+                    audio.pause();
+                    playIcon.classList.remove('fa-pause');
+                    playIcon.classList.add('fa-play');
+                } else {
+                    audio.play();
+                    playIcon.classList.remove('fa-play');
+                    playIcon.classList.add('fa-pause');
+                }
+                isPlaying = !isPlaying;
+            }
+            
+            // Événements
+            playPauseBtn.addEventListener('click', togglePlayPause);
+            
+            audio.addEventListener('ended', () => {
+                isPlaying = false;
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+            });
+            
+            // Contrôle du volume
+            volumeSlider.addEventListener('input', () => {
+                audio.volume = volumeSlider.value / 100;
+            });
+            
+            // Boutons précédent/suivant (pour l'instant, ils redémarrent la musique)
+            prevBtn.addEventListener('click', () => {
+                audio.currentTime = 0;
+                if (!isPlaying) {
+                    audio.play();
+                    isPlaying = true;
+                    playIcon.classList.remove('fa-play');
+                    playIcon.classList.add('fa-pause');
+                }
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                audio.currentTime = 0;
+                if (!isPlaying) {
+                    audio.play();
+                    isPlaying = true;
+                    playIcon.classList.remove('fa-play');
+                    playIcon.classList.add('fa-pause');
+                }
+            });
+            
+            // Chargement automatique de la musique
+            audio.load();
+            
+            // Jouer automatiquement (optionnel - commenté pour respecter les politiques des navigateurs)
+            // audio.play().then(() => {
+            //     isPlaying = true;
+            //     playIcon.classList.remove('fa-play');
+            //     playIcon.classList.add('fa-pause');
+            // }).catch(error => {
+            //     console.log("Lecture automatique désactivée. L'utilisateur doit interagir avec la page.");
+            // });
+        }
+
+        // Vérifier si une photo existe
+        function checkForPhoto() {
+            // Cette fonction vérifie si une photo nommée "photo-prince.jpg" existe
+            // et la charge si c'est le cas
+            const img = new Image();
+            img.src = 'photo-prince.jpg';
+            
+            img.onload = function() {
+                // La photo existe, on la charge
+                const photoFrame = document.querySelector('.photo-frame');
+                if (photoFrame) {
+                    photoFrame.innerHTML = '';
+                    const newImg = document.createElement('img');
+                    newImg.src = 'photo-prince.jpg';
+                    newImg.alt = 'Photo de Prince';
+                    newImg.style.width = '100%';
+                    newImg.style.height = '100%';
+                    newImg.style.objectFit = 'cover';
+                    photoFrame.appendChild(newImg);
+                    
+                    // Ajouter un effet de fondu
+                    newImg.style.opacity = '0';
+                    setTimeout(() => {
+                        newImg.style.transition = 'opacity 1s';
+                        newImg.style.opacity = '1';
+                    }, 100);
+                }
+            };
+            
+            img.onerror = function() {
+                // La photo n'existe pas, on garde le placeholder
+                console.log("Aucune photo trouvée. Utilisation du placeholder.");
+            };
+        }
+
+        // Animations au scroll
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        
+                        // Animation spécifique pour les statistiques
+                        if (entry.target.classList.contains('stat-number')) {
+                            const finalValue = entry.target.getAttribute('data-count');
+                            if (finalValue && !entry.target.hasAttribute('data-animated')) {
+                                animateCounter(entry.target, finalValue);
+                                entry.target.setAttribute('data-animated', 'true');
+                            }
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Observer tous les éléments avec des animations
+            document.querySelectorAll('.section-title, .section-subtitle, .souvenir-content, .letter, .decoration-item, .stat-number').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Animation des compteurs
+        function initCounterAnimation() {
+            // Cette fonction est appelée par initScrollAnimations
+            // lorsqu'un élément .stat-number entre dans la vue
+        }
+
+        function animateCounter(element, target) {
+            // Si l'élément a l'infini, ne pas animer
+            if (target === "∞") return;
+            
+            let current = 0;
+            const increment = target / 100;
+            const duration = 2000; // 2 secondes
+            const stepTime = Math.abs(Math.floor(duration / target));
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, stepTime);
+        }
+
+        // Effet parallax
+        function initParallaxEffect() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.parallax');
+                
+                parallaxElements.forEach(element => {
+                    const speed = element.getAttribute('data-speed') || 0.5;
+                    const yPos = -(scrolled * speed);
+                    element.style.transform = `translateY(${yPos}px)`;
+                });
+                
+                // Effet subtil sur la section hero
+                const heroContent = document.querySelector('.hero-content');
+                if (heroContent) {
+                    const heroYPos = scrolled * 0.3;
+                    heroContent.style.transform = `translateY(${heroYPos}px)`;
+                    heroContent.style.opacity = 1 - (scrolled / 800);
+                }
+            });
+        }
+
+        // Gestionnaire pour le bouton CTA
+        document.querySelector('.cta-button')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        // Gestionnaire pour les liens de navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fonction pour ajouter une photo (manuellement depuis la console)
+        function addPhoto(imageSrc) {
+            const photoFrame = document.querySelector('.photo-frame');
+            if (photoFrame) {
+                photoFrame.innerHTML = '';
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.alt = 'Photo de Prince';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                photoFrame.appendChild(img);
+                
+                // Ajouter un effet de fondu
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    img.style.transition = 'opacity 1s';
+                    img.style.opacity = '1';
+                }, 100);
+                
+                return true;
+            }
+            return false;
+        }
+
+        // Message de console pour le développeur
+        console.log('%c🎉 Site d\'anniversaire pour Prince - 19 ans 🎂', 'color: #D4AF37; font-size: 18px; font-weight: bold;');
+        console.log('%cCréé avec amitié par Kad Déo-Gratias AKOTCHAYE', 'color: #aaa; font-size: 14px;');
+        console.log('%cPour ajouter une photo, utilisez la fonction addPhoto("chemin/vers/photo.jpg") dans la console.', 'color: #D4AF37; font-size: 14px;');
+        console.log('%cOu placez simplement une image nommée "photo-prince.jpg" dans le même dossier.', 'color: #D4AF37; font-size: 14px;');
+    </script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Knowledge Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .question-container {
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .option {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .option:hover {
+            background-color: #2980b9;
+        }
+        .timer {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0;
+            color: #e74c3c;
+        }
+        .progress {
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .result {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .score {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .start-btn, .next-btn {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+        .start-btn:hover, .next-btn:hover {
+            background-color: #27ae60;
+        }
+        .next-btn {
+            display: none;
+        }
+        .correct {
+            background-color: #2ecc71 !important;
+        }
+        .wrong {
+            background-color: #e74c3c !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Eugirdor Quiz</h1>
+        
+        <div id="start-screen">
+            <p>10 Questions sur Eugirdor.</p>
+            <p>.</p>
+            <p>Good luck!</p>
+            <button class="start-btn" onclick="startQuiz()">Start</button>
+        </div>
+        
+        <div id="quiz-screen" style="display: none;">
+            <div class="progress">
+                Question <span id="question-number">1</span>/10 - Score: <span id="score">0</span>
+            </div>
+            <div class="timer" id="timer">15</div>
+            <div class="question-container">
+                <div class="question" id="question"></div>
+                <div class="options" id="options"></div>
+            </div>
+            <button class="next-btn" id="next-btn" onclick="nextQuestion()">Next Question</button>
+        </div>
+        
+        <div id="result-screen" class="result" style="display: none;">
+            <h2>Quiz Finished!</h2>
+            <div class="score">Your Score: <span id="final-score">0</span>/100</div>
+            <p id="result-message"></p>
+            <button class="start-btn" onclick="resetQuiz()">Play Again</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Eugidor a quel age ?",
+                options: ["A) 19", "B) 20", "C) 18", "D) 21"],
+                answer: "A"
+            },
+            {
+                question: "Second prenom d'Eugirdor?",
+                options: ["A) Prince", "B) Junior", "C) Judo", "D) il n'a pas "],
+                answer: "A"
+            },
+            {
+                question: "Eugirdor est il fidele en amour ?",
+                options: ["A) oui ", "B) non ", "C) A la base oui la suite depend de la relation", "D) Trop meme "],
+                answer: "C"
+            },
+            {
+                question: " C'est qui sa go?",
+                options: ["A) Kad", "B) Michelle ", "C) Y ", "D) Ysm"],
+                answer: "D"
+            },
+            {
+                question: "Niveau d'etude?",
+                options: ["A) Bac", "B) L2", "C) L1", "D) Il n'a pas été a l'école"],
+                answer: "B"
+            },
+            {
+                question: "Quelle est sa viande préferé?",
+                options: ["A) Mouton", "B) Porc ", "C) Poulet", "D) chien😂"],
+                answer: "B"
+            },
+            {
+                question: "Eugirdor est resté a Adjagbo?",
+                options: ["A) Juste un mois", "B) Oui plus d'un an meme ", "C) Oui oui 2ans", "D) Non"],
+                answer: "B"
+            },
+            {
+                question: "Son pseudo?",
+                options: ["A) Empire", "B) Empeeur", "C) EMPEREUR CANADIEEN", "D) il n'en a pas"],
+                answer: "C"
+            },
+            {
+                question: "Eugidor est il orphélin?",
+                options: ["A) Non ", "B) Oui de pere", "C) Oui de mere ", "D) Non non et non"],
+                answer: "B"
+            },
+            {
+                question: "Son club?",
+                options: ["A) Barcelone", "B) Réal Madrid", "C) ParisSG", "D) Man City"],
+                answer: "B"
+            },
+            
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let timer;
+        let timeLeft = 15;
+        let shuffledQuestions = [];
+
+        function startQuiz() {
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'block';
+            
+            // Shuffle questions
+            shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
+            
+            showQuestion();
+            startTimer();
+        }
+
+        function showQuestion() {
+            if (currentQuestion >= 10) {
+                showResult();
+                return;
+            }
+
+            const question = shuffledQuestions[currentQuestion];
+            document.getElementById('question').textContent = question.question;
+            document.getElementById('question-number').textContent = currentQuestion + 1;
+            document.getElementById('score').textContent = score;
+
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+
+            question.options.forEach(option => {
+                const button = document.createElement('button');
+                button.className = 'option';
+                button.textContent = option;
+                button.onclick = () => selectAnswer(option[0]);
+                optionsContainer.appendChild(button);
+            });
+
+            document.getElementById('next-btn').style.display = 'none';
+        }
+
+        function selectAnswer(selectedOption) {
+            clearInterval(timer);
+            
+            const question = shuffledQuestions[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach(option => {
+                option.disabled = true;
+                if (option.textContent[0] === question.answer) {
+                    option.classList.add('correct');
+                } else if (option.textContent[0] === selectedOption && selectedOption !== question.answer) {
+                    option.classList.add('wrong');
+                }
+            });
+
+            if (selectedOption === question.answer) {
+                score += 10;
+                document.getElementById('score').textContent = score;
+            }
+
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            timeLeft = 15;
+            document.getElementById('timer').textContent = timeLeft;
+            
+            if (currentQuestion < 10) {
+                showQuestion();
+                startTimer();
+            } else {
+                showResult();
+            }
+        }
+
+        function startTimer() {
+            clearInterval(timer);
+            timeLeft = 15;
+            document.getElementById('timer').textContent = timeLeft;
+            
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    document.getElementById('timer').textContent = "Time's up!";
+                    
+                    const options = document.querySelectorAll('.option');
+                    options.forEach(option => {
+                        option.disabled = true;
+                    });
+                    
+                    document.getElementById('next-btn').style.display = 'block';
+                }
+            }, 1000);
+        }
+
+        function showResult() {
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('result-screen').style.display = 'block';
+            
+            document.getElementById('final-score').textContent = score;
+            
+            let message = "";
+            if (score >= 80) {
+                message = "Excellent! Tu connais Bien Eugirdor.";
+            } else if (score >= 50) {
+                message = "Good job! Pas mal.";
+            } else if (score >= 30) {
+                message = " Apprend a mieux le connaitre.";
+            } else {
+                message = "Tu n'est pas son amis😂😂😂.";
+            }
+            
+            document.getElementById('result-message').textContent = message;
+        }
+
+        function resetQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            timeLeft = 15;
+            
+            document.getElementById('result-screen').style.display = 'none';
+            document.getElementById('start-screen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
